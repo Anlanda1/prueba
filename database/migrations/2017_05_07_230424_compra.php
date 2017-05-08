@@ -15,12 +15,12 @@ class Compra extends Migration
     {
       Schema::create('compra', function (Blueprint $table) {
         $table->increments('idCompra');
-        $table->boolean('fecha');
-        $table->boolean('monto');
+        $table->datetime('fecha');
+        $table->float('monto');
         $table->integer('mesa_id')->unsigned();
         $table->foreign('mesa_id')->references('idMesa')->on('mesa');
         $table->integer('producto_id')->unsigned();
-        $table->foreign('preducto_id')->references('idProducto')->on('producto');
+        $table->foreign('producto_id')->references('idProducto')->on('producto');
         $table->timestamps();
       });
     }

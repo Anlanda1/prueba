@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Producto extends Migration
+class Almacen extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class Producto extends Migration
      */
     public function up()
     {
-      Schema::create('producto', function (Blueprint $table) {
-        $table->increments('idProducto');
-        $table->string('nombre');
-        $table->string('tipo');
-        $table->float('precio');
-        $table->timestamps();
-      });
+        Schema::create('almacen', function (Blueprint $table) {
+            $table->increments('idProducto');
+            $table->integer('cantidad');
+            $table->timestamps();
+            $table->string('nombre');
+            $table->float('precio');
+        });
     }
 
     /**
