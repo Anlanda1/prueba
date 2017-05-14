@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class GerenteController extends Controller
 {
@@ -13,7 +14,8 @@ class GerenteController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderBy('id', 'DESC')->paginate();
+        return view('gerente', compact('users'));
     }
 
     /**

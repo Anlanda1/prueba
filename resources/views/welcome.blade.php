@@ -79,15 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Bienvenido al sitio web de </br> Alitas FEI
                 </div>
 
+                <a href="{{ url('/publico') }}" class="btn btn-warning" role="button">Ir al sitio</a>
+
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('gerente.index') }}">Listado de empleados</a>
                 </div>
             </div>
         </div>

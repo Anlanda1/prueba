@@ -33,28 +33,28 @@ class autenticacion
         $tipo = $this->auth->user()->puesto;
         switch ($tipo) {
             case "Gerente":
-                redirect()->to('views/gerente');
+                redirect()->to(view('gerente'));
                 break;
 
             case "Mesero":
-                redirect()->to('auth/login');
+                redirect()->to(view('mesero'));
                 break;
                 
             case "Chef":
-                redirect()->to('auth/login');
+                redirect()->to('view/chef');
                 break;
                 
             case "Recepcionista":
-                redirect()->to('auth/login');
+                redirect()->to('view/recepcionista');
                 break;
 
-            /*case "Cajero":
-                return redirect()->to('auth/login');
-                break;*/
+            case "Cajero":
+                redirect()->to(view('cajero'));
+                break;
 
             default:
-                //return response('Unauthorized.', 401);
-                dd($tipo);
+                return response('Unauthorized.', 401);
+                //dd($tipo);
                 break;
         
         /*if ($this->auth->user()->puesto != 'Gerente') {
