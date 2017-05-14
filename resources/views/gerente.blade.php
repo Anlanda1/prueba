@@ -140,103 +140,32 @@
 
     <!-- Portfolio -->
     <section id="almacen" class="portfolio">
-    <!--
-        <div class="container">
-         <div class="col-lg-10 col-lg-offset-1 text-center">
-        <h2><strong>Almacén</strong></h2>
-  
-        <div id="almacen" class="container-fluid">
-        <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <table class="table table-bordered table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th>
-                            Producto
-                        </th>
-                        <th>
-                            Cantidad
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="success">
-                        <td>
-                            Alitas
-                        </td>
-                        <td>
-                            100 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Cebolla
-                        </td>
-                        <td>
-                            10 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Habaneros
-                        </td>
-                        <td>
-                            100 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Apio
-                        </td>
-                        <td>
-                            6 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Queso manchego
-                        </td>
-                        <td>
-                            16 Kg
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="#" class="btn btn-lg btn-success">Editar almacén <span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="#" class="btn btn-lg btn-warning">Actualizar almacen <span class="glyphicon glyphicon-refresh"></span></a>
-        </div>
-    </div>
-    </div>
-    -->
     <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
                 <div class="text-center">
                     <h1>Almacén</h1>
                 </div>
-                </span>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-md-9"><em>Alitas</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 2 </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-9"><em>Papas a la francesa</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 2 </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-9"><em>Aros de cebolla</em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> 2 </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#" class="btn btn-lg btn-success">Editar<span class="glyphicon glyphicon-pencil"></span></a>
+                <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alma as $almacen)
+                    <tr>
+                        <td>{{ $almacen->nombre }}</td>
+                        <td>{{ $almacen->cantidad }}</td>
+                        <td>ver</td>
+                        <td>editar</td>
+                        <td>borrar</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {!! $alma->render() !!}
+                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Editar<span class="glyphicon glyphicon-pencil"></span></a>
             </div>
         </div>
     </section>

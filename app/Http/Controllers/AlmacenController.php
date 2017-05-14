@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Almacen;
 
-class GerenteController extends Controller
+class AlmacenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class GerenteController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->paginate();
         $alma = Almacen::orderBy('idProducto', 'DESC')->paginate();
-        return view('gerente', compact('users'), compact('alma'));
-        //return view('gerente', compact('alma'));
+        return view('gerente', compact('alma'));
     }
 
     /**
