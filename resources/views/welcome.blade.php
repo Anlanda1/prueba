@@ -82,7 +82,7 @@
                     Bienvenido al sitio web de </br> Alitas FEI
                 </div>
 
-                <a href="{{ url('/publico') }}" class="btn btn-warning" role="button">Ir al sitio</a>
+                <button href="{{ url('/publico') }}" class="btn btn-warning">Ir al sitio</button>
 
                 <div class="links">
                     <a href="{{ route('gerente.index') }}">Listado de empleados</a>
