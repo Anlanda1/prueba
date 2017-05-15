@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Alitas FEI</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
+@section('content')
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
@@ -59,39 +34,8 @@
         </div>
     </header>
 
-    <div id="empleados" class="container-fluid">
-    <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <div class="text-center">
-                        <h1>Empleados</h1>
-            </div>
-            <table class="table table-bordered table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Puesto</th>
-                        <th>Sueldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->apellido }}</td>
-                        <td>{{ $user->puesto }}</td>
-                        <td>{{ $user->sueldo }}</td>
-                        <td>ver</td>
-                        <td>editar</td>
-                        <td>borrar</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {!! $users->render() !!}
-            <a href="{{ route('gerente.create') }}" class="btn btn-lg btn-success">Nuevo empleado   <span class="glyphicon glyphicon-ok"></span></a>
-        </div>
-    </div>
+    <div>
+        @yield('content')
     </div>
 
     <!-- About  aqui abajo va el menu-->
@@ -138,46 +82,11 @@
         </div>
     </section>
 
-    <!-- Portfolio -->
-    <section id="almacen" class="portfolio">
-    <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-                <div class="text-center">
-                    <h1>Almacén</h1>
-                </div>
-                <table class="table table-bordered table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($alma as $almacen)
-                    <tr>
-                        <td>{{ $almacen->nombre }}</td>
-                        <td>{{ $almacen->cantidad }}</td>
-                        <td>ver</td>
-                        <td>editar</td>
-                        <td>borrar</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {!! $alma->render() !!}
-                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Editar<span class="glyphicon glyphicon-pencil"></span></a>
-            </div>
-        </div>
-    </section>
-
     <!-- registro empleado -->
     <section id="registro_e" class="portfolio">
         <div class="container">
          <div class="col-lg-10 col-lg-offset-1 text-center">
          <h2><strong>Registro empleado</strong></h2>
-
-
-  
         </div>
     </section>
     <!-- termina registro empleado-->
@@ -248,7 +157,7 @@
         that.on('click', onMapClickHandler);
         that.off('mouseleave', onMapMouseleaveHandler);
         that.find('iframe').css("pointer-events", "none");
-    }*/
+    }
     var onMapClickHandler = function(event) {
             var that = $(this);
             // Disable the click handler until the user leaves the map area
@@ -259,9 +168,7 @@
             that.on('mouseleave', onMapMouseleaveHandler);
         }
         // Enable map zooming with mouse scroll when the user clicks the map
-    $('.map').on('click', onMapClickHandler);
+    $('.map').on('click', onMapClickHandler);*/
     </script>
 
-</body>
-
-</html>
+@endsection

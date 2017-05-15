@@ -17,8 +17,7 @@ class GerenteController extends Controller
     {
         $users = User::orderBy('id', 'DESC')->paginate();
         $alma = Almacen::orderBy('idProducto', 'DESC')->paginate();
-        return view('gerente', compact('users'), compact('alma'));
-        //return view('gerente', compact('alma'));
+        return view('crudgerente.tablas', compact('users'), compact('alma'));
     }
 
     /**
@@ -84,6 +83,9 @@ class GerenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+
+        return back()->with('info', 'El empleado ha sido eliminado');
     }
 }
