@@ -12,16 +12,12 @@
 */
 
 Route::get('/', function() {
-    return view('welcome');
+    return view('publico');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/publico', function() {
-	return view('publico');
-});
 
 Route::resource('gerente', 'GerenteController');
 Route::resource('almacen', 'AlmacenController');

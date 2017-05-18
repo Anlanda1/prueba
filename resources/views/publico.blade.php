@@ -50,21 +50,27 @@
                 <a href="#services" onclick=$("#menu-close").click();>Promociones</a>
             </li>
             <li>
-                <a href="#" onclick=$("#menu-close").click();>Iniciar sesión</a>
-            </li>
-            <li>
                 <a href="#contact" onclick=$("#menu-close").click();>Contacto</a>
+            </li>
+            <!-- <li>
+                <a href="#" onclick=$("#menu-close").click();>Iniciar sesión</a>
+            </li> -->
+            <li>
+                <a href="{{ url('/login') }}" onclick="event.preventDefault();
+                        document.getElementById('login-form').submit();">Iniciar sesión</a>
+                    <form id="login-form" action="{{ route('login') }}" method="GET" style="display: none;">{{ csrf_field() }}
+                    </form>
             </li>
         </ul>
     </nav>
-
+    
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1>Bienvenido</h1>
             <h3>Alitas FEI - Donde tus antojos son cumplidos</h3>
             <br>
-            <a href="#contact" class="btn btn-dark btn-lg">Contáctanos</a>
+            <a href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Contáctanos</a>
         </div>
     </header>
 

@@ -1,13 +1,39 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Alitas FEI</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>Gerente</a>
+                <a href="#top" onclick=$("#menu-close").click();>Gerente {{ Auth::user()->name }}</a>
             </li>
             <li>
                 <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
@@ -24,6 +50,13 @@
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>Reportes</a>
             </li>
+            <li>
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+                    </form>
+            </li>
         </ul>
     </nav>
 
@@ -34,9 +67,84 @@
         </div>
     </header>
 
-    <div>
-        @yield('content')
+    <!-- Tabla de empleados -->
+    <div id="empleados" class="container-fluid">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="text-center">
+                        <h1>Empleados</h1>
+            </div>
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Puesto</th>
+                        <th>Sueldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->apellido }}</td>
+                        <td>{{ $user->puesto }}</td>
+                        <td>{{ $user->sueldo }}</td>
+                        <td>
+                            <form action="{{ route('gerente.edit', $user->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <button class="btn btn-warning">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ route('gerente.destroy', $user->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {!! $users->render() !!}
+            <a href="{{ route('gerente.create') }}" class="btn btn-lg btn-success">Nuevo empleado   <span class="glyphicon glyphicon-ok"></span></a>
+        </div>
     </div>
+    </div>
+
+    <!-- Tabla de almacen -->
+
+    <!-- Portfolio -->
+    <section id="almacen" class="portfolio">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="text-center">
+                    <h1>Almacén</h1>
+                </div>
+                <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alma as $almacen)
+                    <tr>
+                        <td>{{ $almacen->nombre }}</td>
+                        <td>{{ $almacen->cantidad }}</td>
+                        <td>editar</td>
+                        <td>borrar</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {!! $alma->render() !!}
+                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Editar<span class="glyphicon glyphicon-pencil"></span></a>
+            </div>
+        </div>
+    </section>
 
     <!-- About  aqui abajo va el menu-->
     <section id="menu" class="portfolio">
@@ -170,5 +278,5 @@
         // Enable map zooming with mouse scroll when the user clicks the map
     $('.map').on('click', onMapClickHandler);*/
     </script>
-
-@endsection
+</body>
+</html>

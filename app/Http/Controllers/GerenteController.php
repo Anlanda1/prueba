@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Almacen;
+use App\Http\Requests\UserRequest;
 
 class GerenteController extends Controller
 {
@@ -17,7 +18,7 @@ class GerenteController extends Controller
     {
         $users = User::orderBy('id', 'DESC')->paginate();
         $alma = Almacen::orderBy('idProducto', 'DESC')->paginate();
-        return view('crudgerente.tablas', compact('users'), compact('alma'));
+        return view('gerente', compact('users'), compact('alma'));
     }
 
     /**
@@ -27,7 +28,7 @@ class GerenteController extends Controller
      */
     public function create()
     {
-        //
+        return view('crudgerente.create');
     }
 
     /**
@@ -36,9 +37,18 @@ class GerenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $user = new Product;
+
+        $user->name = $request->name;
+        $user->apellido = $request->apellido;
+        $user->sueldo = $request->sueldo;
+        $user->puesto = $request->puesto;
+
+        $user->save();
+        
+        return redirect()->route('gerente.index')->with('info', 'El empleado ha sido agregado');;
     }
 
     /**
@@ -49,7 +59,8 @@ class GerenteController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('crudgerente.show', compact('user'));
     }
 
     /**
@@ -60,7 +71,8 @@ class GerenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('crudgerente.edit', compact('user'));
     }
 
     /**
@@ -70,9 +82,18 @@ class GerenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->apellido = $request->apellido;
+        $user->sueldo = $request->sueldo;
+        $user->puesto = $request->puesto;
+
+        $user->save();
+        
+        return redirect()->route('gerente.index')->with('info', 'El empleado ha sido eliminado');;
     }
 
     /**

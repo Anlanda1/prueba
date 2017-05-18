@@ -41,11 +41,11 @@ class autenticacion
                 break;
                 
             case "Chef":
-                redirect()->to('view/chef');
+                redirect()->to('chef');
                 break;
                 
             case "Recepcionista":
-                redirect()->to('view/recepcionista');
+                redirect()->to('recepcionista');
                 break;
 
             case "Cajero":
