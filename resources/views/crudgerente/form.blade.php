@@ -9,6 +9,11 @@
 </div>
 
 <div class="form-group">
+	{!! Form::label('email', 'Email del empleado') !!}
+	{!! Form::text('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('puesto', 'Puesto del empleado') !!}
 	{!! Form::text('puesto', null, ['class' => 'form-control']) !!}
 </div>

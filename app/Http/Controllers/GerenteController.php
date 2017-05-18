@@ -43,12 +43,13 @@ class GerenteController extends Controller
 
         $user->name = $request->name;
         $user->apellido = $request->apellido;
+        $user->email = $request->email;
         $user->sueldo = $request->sueldo;
         $user->puesto = $request->puesto;
 
         $user->save();
         
-        return redirect()->route('gerente.index')->with('info', 'El empleado ha sido agregado');;
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -88,12 +89,13 @@ class GerenteController extends Controller
 
         $user->name = $request->name;
         $user->apellido = $request->apellido;
+        $user->email = $request->email;
         $user->sueldo = $request->sueldo;
         $user->puesto = $request->puesto;
 
         $user->save();
         
-        return redirect()->route('gerente.index')->with('info', 'El empleado ha sido eliminado');;
+        return redirect()->route('gerente.index')->with('info', 'El empleado ha sido eliminado');
     }
 
     /**
@@ -107,6 +109,6 @@ class GerenteController extends Controller
         $users = User::find($id);
         $users->delete();
 
-        return back()->with('info', 'El empleado ha sido eliminado');
+        return back();
     }
 }
