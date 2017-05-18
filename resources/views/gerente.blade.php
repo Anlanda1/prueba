@@ -127,21 +127,34 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Cantidad</th>
+                        <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($alma as $almacen)
+                    @foreach($almac as $alma)
                     <tr>
-                        <td>{{ $almacen->nombre }}</td>
-                        <td>{{ $almacen->cantidad }}</td>
-                        <td>editar</td>
-                        <td>borrar</td>
+                        <td>{{ $alma->nombre }}</td>
+                        <td>{{ $alma->cantidad }}</td>
+                        <td>{{ $alma->precio }}</td>
+                        <td>
+                            <form action="{{ route('almacen.edit', $alma->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <button class="btn btn-warning">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ route('almacen.destroy', $alma->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             {!! $alma->render() !!}
-                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Editar<span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>
             </div>
         </div>
     </section>

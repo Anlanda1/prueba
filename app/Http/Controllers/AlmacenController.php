@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Almacen;
+use App\Http\Requests\AlmacenRequest;
 
 class AlmacenController extends Controller
 {
@@ -25,7 +26,7 @@ class AlmacenController extends Controller
      */
     public function create()
     {
-        //
+        return view('crudalmacen.create');
     }
 
     /**
@@ -36,7 +37,15 @@ class AlmacenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alma = new Almacen;
+
+        $alma->name = $request->name;
+        $alma->cantidad = $request->cantidad;
+        $alma->precio = $request->precio;
+
+        $alma->save();
+        
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -47,7 +56,8 @@ class AlmacenController extends Controller
      */
     public function show($id)
     {
-        //
+        $alma = Almacen::find($id);
+        return view('crudalmacen.show', compact('alma'));
     }
 
     /**
@@ -58,7 +68,8 @@ class AlmacenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alma = Almacen::find($id);
+        return view('crudalmacen.edit', compact('alma'));
     }
 
     /**
@@ -70,7 +81,15 @@ class AlmacenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alma = Almacen::find($id);
+
+        $alma->name = $request->name;
+        $alma->cantidad = $request->cantidad;
+        $alma->precio = $request->precio;
+
+        $alma->save();
+        
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -81,6 +100,9 @@ class AlmacenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alma = Almacen::find($id);
+        $alma->delete();
+
+        return back();
     }
 }

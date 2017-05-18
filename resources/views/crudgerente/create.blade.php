@@ -4,7 +4,7 @@
 	<div class="col-sm-8">
 		<h2>
 			Nuevo empleado
-			<button href="{{ route('gerente.index') }}" class="btn btn-primary">Listado</button>
+			<button href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Volver</button>
 		</h2>
         {!! Form::open(['route' => 'gerente.store']) !!}
 

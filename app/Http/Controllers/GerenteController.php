@@ -39,7 +39,7 @@ class GerenteController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = new Product;
+        $user = new User;
 
         $user->name = $request->name;
         $user->apellido = $request->apellido;
