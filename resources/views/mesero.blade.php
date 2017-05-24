@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Restaurante</title>
+    <title>Alitas FEI</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,208 +32,89 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>Mesero</a>
+                <a href="#top" onclick=$("#menu-close").click();>Mesero {{ Auth::user()->name }}</a>
             </li>
             <li>
-                <a href="#services" onclick=$("#menu-close").click();>Seleccionar Mesa</a>
-            </li>
-            <li>
-                <a href="#about" onclick=$("#menu-close").click();>Realizar pedido</a>
+                <a href="#" onclick=$("#menu-close").click();>Realizar pedido</a>
             </li>
             <li>
                 <a href="#portfolio" onclick=$("#menu-close").click();>Menú</a>
             </li>
             <li>
-                <a href="#" onclick=$("#menu-close").click();>Ver mas</a>
-            </li>
-            <li>
-               <!-- <a href="#contact" onclick=$("#menu-close").click();>Contact</a> -->
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+                    </form>
             </li>
         </ul>
     </nav>
 
     <!-- Header -->
-    <header id="top" class="header">
-        <div class="text-vertical-center" >
-            <h1>Restaurante fei </h1>
-            <h3>Bienvenido!!!</h3>
+    <header id="top" class="headermesero">
+        <div class="text-vertical-center">
+            <h1>Bienvenido mesero</h1>
             <br>
-            <a href="#about" class="btn btn-light btn-lg">Comenzar pedido</a>
+            <!--<a href="#about" class="btn btn-light btn-lg">Comenzar pedido</a>-->
         </div>
     </header>
 
-    <!-- About -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2> <strong> Seleccionar mesa </strong> </h2>
-                    <!--p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p-->
-                </div>
+    <!-- Tabla menu -->
+    <div id="menu" class="container-fluid">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="text-center">
+                <h1>Menú</h1>
             </div>
-            <!-- /.row -->
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr class="danger">
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($platillos as $platillo)
+                    <tr>
+                        <td>{{ $platillo->nombre }}</td>
+                        <td>{{ $platillo->descripcion }}</td>
+                        <td>{{ $platillo->tipo }}</td>
+                        <td>{{ $platillo->precio }}</td>
+                        <td>
+                            <form action="{{ route('producto.edit', $platillo->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <button class="btn btn-warning">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ route('producto.destroy', $platillo->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {!! $platillos->render() !!}
         </div>
-        <!-- /.container -->
-    </section>
+    </div>
+    </div>
 
-    <!-- Services -->
-    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-    <section id="services" class="services bg-primary">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <h2>Mesas</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
-                                <h4>
-                                    <strong>Mesa 1</strong>
-                                </h4>
-                                <p>mesa para 2 personas</p>
-                                <a href="#" class="btn btn-light">Seleccionar</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
-                                <h4>
-                                    <strong>Mesa 2</strong>
-                                </h4>
-                                <p>Mesa para 3 personas</p>
-                                <a href="#" class="btn btn-light">Seleccionar</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
-                            </span>
-                                <h4>
-                                    <strong>Mesa 3</strong>
-                                </h4>
-                                <p>Mesa para 6 personas</p>
-                                <a href="#" class="btn btn-light">Seleccionar</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <i class="fa fa-coffee fa-5x" aria-hidden="true"></i>
-                                <h4>
-                                    <strong>Mesa 4</strong>
-                                </h4>
-                                <p>mesa para 4 personas</p>
-                                <a href="#" class="btn btn-light">Seleccionar</a>
-                            </div>
-                            
-                        </div>
-                       
-                    </div>
-                    <!-- /.row (nested) -->
-                    
-                </div>
-                <!-- /.col-lg-10 -->
-            </div>
-            <!-- /.row -->
-             <a href="#top" class="btn btn-dark btn-lg">regresar</a>
-             <a href="#portfolio" class="btn btn-dark btn-lg">siguiente</a>
-        </div>
-        <!-- /.container -->
-        
-    </section>
-    
-    <!-- Callout 
-   <aside class="callout">
-        <div class="text-vertical-center">
-            <h1>Vertically Centered Text</h1>
-        </div>
-    </aside>-->
-
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2><strong>Nuestro menu</strong></h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            
-                            <div class="portfolio-item"><!-- -->
-                                <a href="#">
-                                    
-                                    <img class="img-portfolio img-responsive" src="img/menu1.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu2.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu3.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                    <a href="#" class="btn btn-dark">Ver mas</a>
-                </div>
-                <!-- /.col-lg-10 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
-    <!-- Call to Action -->
+    <!-- pedido -->
     <aside class="call-to-action bg-primary">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h3>Desea terminar el pedido</h3>
-                    <a href="#" class="btn btn-lg btn-light">Cancelar</a>
-                    <a href="#" class="btn btn-lg btn-dark">Terminar</a>
+                    <h3>Tomar pedido</h3>
+                    <a href="{{ route('pedido.create') }}" class="btn btn-success">Nuevo pedido   <span class="glyphicon glyphicon-ok"></span></a>
                 </div>
             </div>
         </div>
     </aside>
-
-    <!-- Map -->
-   
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    
-                    </ul>
-                    <br>
-                    <ul class="list-inline">
-                        <li>
-                           
-                        </li>
-                    </ul>
-                    <hr class="small">
-                    <!--<p class="text-muted">Copyright &copy; Your Website 2014</p>-->
-                </div>
-            </div>
-        </div>
-        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
-    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

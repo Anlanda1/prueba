@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Mesa extends Migration
+class Pedido extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class Mesa extends Migration
      */
     public function up()
     {
-      Schema::create('mesa', function (Blueprint $table) {
+        Schema::create('pedido', function (Blueprint $table) {
         $table->increments('id');
         $table->boolean('estado');
-        $table->integer('user_id')->unsigned();
-        $table->foreign('user_id')->references('id')->on('users');
+        $table->integer('mesa_id')->unsigned();
+        $table->foreign('mesa_id')->references('id')->on('mesa');
+        $table->integer('empleado_id')->unsigned();
+        $table->foreign('empleado_id')->references('id')->on('users');
+        $table->integer('producto_id')->unsigned();
+        $table->foreign('producto_id')->references('id')->on('producto');
         $table->timestamps();
       });
     }

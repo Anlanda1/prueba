@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Almacen;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
 
 class GerenteController extends Controller
@@ -17,8 +18,8 @@ class GerenteController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'DESC')->paginate();
-        $alma = Almacen::orderBy('idProducto', 'DESC')->paginate();
-        return view('gerente', compact('users'), compact('alma'));
+        $productos = Almacen::orderBy('id', 'DESC')->paginate();
+        return view('gerente', compact('users'), compact('productos'));
     }
 
     /**
@@ -46,6 +47,8 @@ class GerenteController extends Controller
         $user->email = $request->email;
         $user->sueldo = $request->sueldo;
         $user->puesto = $request->puesto;
+        $pass = Hash::make($request->password);
+        $user->password = $pass;
 
         $user->save();
         

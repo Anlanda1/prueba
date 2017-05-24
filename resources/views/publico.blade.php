@@ -44,17 +44,14 @@
                 <a href="#top" onclick=$("#menu-close").click();>Inicio</a>
             </li>
             <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Menú</a>
+                <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
             </li>
             <li>
-                <a href="#services" onclick=$("#menu-close").click();>Promociones</a>
+                <a href="#promos" onclick=$("#menu-close").click();>Promociones</a>
             </li>
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>Contacto</a>
             </li>
-            <!-- <li>
-                <a href="#" onclick=$("#menu-close").click();>Iniciar sesión</a>
-            </li> -->
             <li>
                 <a href="{{ url('/login') }}" onclick="event.preventDefault();
                         document.getElementById('login-form').submit();">Iniciar sesión</a>
@@ -65,12 +62,14 @@
     </nav>
     
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="headerpub">
         <div class="text-vertical-center">
             <h1>Bienvenido</h1>
             <h3>Alitas FEI - Donde tus antojos son cumplidos</h3>
             <br>
-            <a href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Contáctanos</a>
+            <a href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Gerente</a>
+            <a href="{{ route('mesero.index') }}" class="btn btn-dark btn-lg">Mesero</a>
+            <a href="{{ route('chef.index') }}" class="btn btn-dark btn-lg">Chef</a>
         </div>
     </header>
 
@@ -90,8 +89,8 @@
     </section>
     -->
 
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
+    <!-- Menú -->
+    <section id="menu" class="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
@@ -127,16 +126,9 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <!- /.row (nested) ->
-                    <a href="#" class="btn btn-dark">View More Items</a>
-                    -->
                 </div>
-                <!-- /.col-lg-10 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container -->
     </section>
 
     <!-- Callout -->
@@ -147,9 +139,8 @@
         </div>
     </aside>
 
-    <!-- Services -->
-    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-    <section id="services" class="services bg-primary">
+    <!-- Promos -->
+    <section id="promos" class="services bg-primary">
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-10 col-lg-offset-1">

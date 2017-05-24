@@ -12,8 +12,10 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -36,16 +38,16 @@
                 <a href="#top" onclick=$("#menu-close").click();>Gerente {{ Auth::user()->name }}</a>
             </li>
             <li>
-                <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
+                <a href="#empleados" onclick=$("#menu-close").click();>Empleados</a>
             </li>
             <li>
                 <a href="#almacen" onclick=$("#menu-close").click();>Almacén</a>
             </li>
             <li>
-                <a href="#registro_e" onclick=$("#menu-close").click();>Registro de empleado</a>
+                <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
             </li>
             <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Mesas asignadas</a>
+                <a href="#portfolio" onclick=$("#menu-close").click();>Mesas</a>
             </li>
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>Reportes</a>
@@ -61,7 +63,7 @@
     </nav>
 
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="headergerente">
         <div class="text-vertical-center" >
             <h1>Bienvenido gerente</h1>
         </div>
@@ -72,11 +74,11 @@
     <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="text-center">
-                        <h1>Empleados</h1>
+                        <h2>Empleados</h2>
             </div>
             <table class="table table-bordered table-hover table-condensed">
                 <thead>
-                    <tr>
+                    <tr class="danger">
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Puesto</th>
@@ -108,42 +110,40 @@
                 </tbody>
             </table>
             {!! $users->render() !!}
-            <a href="{{ route('gerente.create') }}" class="btn btn-lg btn-success">Nuevo empleado   <span class="glyphicon glyphicon-ok"></span></a>
+            <a href="{{ route('gerente.create') }}" class="btn btn-success">Nuevo empleado   <span class="glyphicon glyphicon-ok"></span></a>
         </div>
     </div>
     </div>
 
     <!-- Tabla de almacen -->
-
-    <!-- Portfolio -->
     <section id="almacen" class="portfolio">
-    <div class="row">
+        <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
                 <div class="text-center">
-                    <h1>Almacén</h1>
+                    <h2>Almacén</h2>
                 </div>
                 <table class="table table-bordered table-hover table-condensed">
                 <thead>
-                    <tr>
+                    <tr class="danger">
                         <th>Nombre</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($almac as $alma)
+                    @foreach($productos as $producto)
                     <tr>
-                        <td>{{ $alma->nombre }}</td>
-                        <td>{{ $alma->cantidad }}</td>
-                        <td>{{ $alma->precio }}</td>
+                        <td>{{ $producto->nombre }}</td>
+                        <td>{{ $producto->cantidad }}</td>
+                        <td>{{ $producto->precio }}</td>
                         <td>
-                            <form action="{{ route('almacen.edit', $alma->id) }}" method="GET">
+                            <form action="{{ route('almacen.edit', $producto->id) }}" method="GET">
                                 {{ csrf_field() }}
                                 <button class="btn btn-warning">Editar</button>
                             </form>
                         </td>
                         <td>
-                            <form action="{{ route('almacen.destroy', $alma->id) }}" method="POST">
+                            <form action="{{ route('almacen.destroy', $producto->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="btn btn-danger">Borrar</button>
@@ -153,70 +153,24 @@
                     @endforeach
                 </tbody>
             </table>
-            {!! $alma->render() !!}
-                <a href="{{ route('almacen.create') }}" class="btn btn-lg btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>
-            </div>
+            {!! $productos->render() !!}
+                <a href="{{ route('almacen.create') }}" class="btn btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>
+        </div>
         </div>
     </section>
 
-    <!-- About  aqui abajo va el menu-->
-    <section id="menu" class="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2><strong>Nuestro menú</strong></h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu1.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu2.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu3.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/menu4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                    <a href="#" class="btn btn-lg btn-success">Editar <span class="glyphicon glyphicon-pencil"></span></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Tabla menu -->
 
-    <!-- registro empleado -->
-    <section id="registro_e" class="portfolio">
-        <div class="container">
-         <div class="col-lg-10 col-lg-offset-1 text-center">
-         <h2><strong>Registro empleado</strong></h2>
-        </div>
-    </section>
-    <!-- termina registro empleado-->
+    <!-- Tabla mesas -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>

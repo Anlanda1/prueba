@@ -14,7 +14,7 @@ class Almacen extends Migration
     public function up()
     {
         Schema::create('almacen', function (Blueprint $table) {
-            $table->increments('idProducto');
+            $table->increments('id');
             $table->integer('cantidad');
             $table->timestamps();
             $table->string('nombre');

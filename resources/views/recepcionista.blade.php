@@ -59,7 +59,7 @@
     </nav>
 
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="headerrecepcionista">
         <div class="text-vertical-center">
             <h1>Bienvenido recepcionista!</h1>
             <br>

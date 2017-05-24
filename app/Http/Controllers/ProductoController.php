@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Almacen;
-use App\Http\Requests\AlmacenRequest;
+use App\Producto;
+use App\Http\Requests\ProductoRequest;
 
-class AlmacenController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AlmacenController extends Controller
      */
     public function index()
     {
-        $productos = Almacen::orderBy('id', 'DESC')->paginate();
-        return view('gerente', compact('productos'));
+        $platillos = Producto::orderBy('id', 'DESC')->paginate();
+        return view('publico', compact('platillos'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AlmacenController extends Controller
      */
     public function create()
     {
-        return view('crudalmacen.create');
+        return view('crudproducto.create');
     }
 
     /**
@@ -35,17 +35,18 @@ class AlmacenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlmacenRequest $request)
+    public function store(ProductoRequest $request)
     {
-        $producto = new Almacen;
+        $platillo = new Producto;
 
-        $producto->nombre = $request->nombre;
-        $producto->cantidad = $request->cantidad;
-        $producto->precio = $request->precio;
+        $platillo->nombre = $request->nombre;
+        $platillo->cantidad = $request->descripcion;
+        $platillo->precio = $request->precio;
+        $platillo->tipo = $request->tipo;
 
-        $producto->save();
+        $platillo->save();
         
-        return redirect()->route('gerente.index');
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -56,8 +57,8 @@ class AlmacenController extends Controller
      */
     public function show($id)
     {
-        $producto = Almacen::find($id);
-        return view('crudalmacen.show', compact('producto'));
+        $platillo = Producto::find($id);
+        return view('crudproducto.show', compact('platillo'));
     }
 
     /**
@@ -68,8 +69,8 @@ class AlmacenController extends Controller
      */
     public function edit($id)
     {
-        $producto = Almacen::find($id);
-        return view('crudalmacen.edit', compact('producto'));
+        $platillo = Producto::find($id);
+        return view('crudproducto.edit', compact('platillo'));
     }
 
     /**
@@ -79,15 +80,16 @@ class AlmacenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AlmacenRequest $request, $id)
+    public function update(ProductoRequest $request, $id)
     {
-        $producto = Almacen::find($id);
+        $platillo = Producto::find($id);
 
-        $producto->nombre = $request->nombre;
-        $producto->cantidad = $request->cantidad;
-        $producto->precio = $request->precio;
+        $platillo->nombre = $request->nombre;
+        $platillo->cantidad = $request->cantidad;
+        $platillo->precio = $request->precio;
+        $platillo->tipo = $request->tipo;
 
-        $producto->save();
+        $platillo->save();
         
         return redirect()->route('gerente.index');
     }
@@ -100,8 +102,8 @@ class AlmacenController extends Controller
      */
     public function destroy($id)
     {
-        $productos = Almacen::find($id);
-        $productos->delete();
+        $platillos = Producto::find($id);
+        $platillos->delete();
 
         return back();
     }

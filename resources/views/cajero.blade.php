@@ -15,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/cssCajero.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@
     </nav>
 
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="headerpub">
         <div class="text-vertical-center">
             <h1>Bienvenido cajero</h1>
         </div>

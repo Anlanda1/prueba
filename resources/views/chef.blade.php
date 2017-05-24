@@ -31,7 +31,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>Opciones</a>
+                <a href="#top" onclick=$("#menu-close").click();>Chef {{ Auth::user()->name }}</a>
             </li>
             <li>
                 <a href="#top" onclick=$("#menu-close").click();>Inicio</a>
@@ -42,11 +42,18 @@
             <li>
                 <a href="#almacen" onclick=$("#menu-close").click();>Almacén</a>
             </li>
+            <li>
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+                    </form>
+            </li>
         </ul>
     </nav>
 
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="headerchef">
         <div class="text-vertical-center">
             <h1>Bienvenido chef</h1>
         </div>
@@ -56,185 +63,86 @@
     <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="text-center">
-                        <h1>Pedidos</h1>
+                <h1>Pedidos</h1>
             </div>
             <table class="table table-bordered table-hover table-condensed">
                 <thead>
-                    <tr>
-                        <th>
-                            # pedido
-                        </th>
-                        <th>
-                            Producto
-                        </th>
-                        <th>
-                            Mesa
-                        </th>
-                        <th>
-                            Mesero
-                        </th>
-                        <th>
-                            Estado
-                        </th>
+                    <tr class="danger">
+                        <th>Número de pedido</th>
+                        <th>Producto</th>
+                        <th>Mesa</th>
+                        <th>Mesero</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="danger">
+                    <tr>
                         <td>
-                            1
+
                         </td>
                         <td>
-                            Alitas mango/habanero
+                            
                         </td>
                         <td>
-                            5
+                            
                         </td>
                         <td>
-                            Fiora
+                            
                         </td>
                         <td>
-                            En proceso
-                        </td>
-                    </tr>
-                    <tr class="default">
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            Aros de cebolla
-                        </td>
-                        <td>
-                            6
-                        </td>
-                        <td>
-                            Ezreal
-                        </td>
-                        <td>
-                            En espera
+                            
                         </td>
                     </tr>
-                    <tr class="default">
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            Papas a la francesa
-                        </td>
-                        <td>
-                            6
-                        </td>
-                        <td>
-                            Ezreal
-                        </td>
-                        <td>
-                            En espera
-                        </td>
-                    </tr>
-                    <tr class="default">
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            Dedos de queso
-                        </td>
-                        <td>
-                            6
-                        </td>
-                        <td>
-                            Ezreal
-                        </td>
-                        <td>
-                            En espera
-                        </td>
-                    </tr>
-                    <tr class="default">
-                        <td>
-                            5
-                        </td>
-                        <td>
-                            Alitas BBQ
-                        </td>
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            gnar
-                        </td>
-                        <td>
-                            En espera
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
-            <a href="#" class="btn btn-lg btn-success">Sacar Pedidos    <span class="glyphicon glyphicon-ok"></span></a>
         </div>
     </div>
     </div>
 
-    <div id="almacen" class="container-fluid">
-    <div class="row">
+    <!-- Tabla de almacen -->
+    <section id="almacen" class="portfolio">
+        <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <div class="text-center">
-                        <h1>Almacén</h1>
-            </div>
-            <table class="table table-bordered table-hover table-condensed">
+                <div class="text-center">
+                    <h2>Almacén</h2>
+                </div>
+                <table class="table table-bordered table-hover table-condensed">
                 <thead>
-                    <tr>
-                        <th>
-                            Producto
-                        </th>
-                        <th>
-                            Cantidad
-                        </th>
+                    <tr class="danger">
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="success">
-                        <td>
-                            Alitas
+                    @foreach($productos as $producto)
+                    <tr>
+                        <td>{{ $producto->nombre }}</td>
+                        <td>{{ $producto->cantidad }}</td>
+                        <td>{{ $producto->precio }}</td>
+                        <!--<td>
+                            <form action="{{ route('almacen.edit', $producto->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <button class="btn btn-warning">Editar</button>
+                            </form>
                         </td>
                         <td>
-                            100 Kg
-                        </td>
+                            <form action="{{ route('almacen.destroy', $producto->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>-->
                     </tr>
-                    <tr class="success">
-                        <td>
-                            Cebolla
-                        </td>
-                        <td>
-                            10 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Habaneros
-                        </td>
-                        <td>
-                            100 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Apio
-                        </td>
-                        <td>
-                            6 Kg
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            Queso manchego
-                        </td>
-                        <td>
-                            16 Kg
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <a href="#" class="btn btn-lg btn-warning">Actualizar almacén       <span class="glyphicon glyphicon-refresh"></span></a>
+            <!--{!! $productos->render() !!}
+                <a href="{{ route('almacen.create') }}" class="btn btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>-->
         </div>
-    </div>
-    </div>
+        </div>
+    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

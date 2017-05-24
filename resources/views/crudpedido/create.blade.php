@@ -3,12 +3,12 @@
 @section('content')
 	<div class="col-sm-8">
 		<h2>
-			Nuevo empleado
-			<a href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Volver</a>
+			Nuevo pedido
+			<a href="{{ route('mesero.index') }}" class="btn btn-dark btn-lg">Volver</a>
 		</h2>
         {!! Form::open(['route' => 'gerente.store']) !!}
 
-            @include('crudgerente.formp')
+            @include('crudpedido.form')
 
         {!! Form::close() !!}
 	</div>

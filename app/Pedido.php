@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Almacen extends Model
+class Pedido extends Model
 {
 	use Notifiable;
 	
-	protected $table = 'almacen';
+	protected $table = 'pedido';
     protected $fillable = [
         'nombre', 'cantidad', 'precio'
     ];

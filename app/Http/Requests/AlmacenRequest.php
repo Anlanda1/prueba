@@ -24,7 +24,7 @@ class AlmacenRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'nombre' => 'required',
             'cantidad' => 'required',
             'precio' => 'required'
         ];
