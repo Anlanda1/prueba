@@ -13,7 +13,14 @@ class Cuenta extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('cuenta', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('fecha');
+        $table->float('monto');
+        $table->integer('pedido_id')->unsigned();
+        $table->foreign('pedido_id')->references('id')->on('pedido');
+        $table->timestamps();
+      });
     }
 
     /**
