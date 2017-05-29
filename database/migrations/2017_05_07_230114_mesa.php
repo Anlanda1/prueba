@@ -15,7 +15,7 @@ class Mesa extends Migration
     {
       Schema::create('mesa', function (Blueprint $table) {
         $table->increments('id');
-        $table->boolean('estado');
+        $table->string('estado');
         $table->integer('user_id')->unsigned();
         $table->foreign('user_id')->references('id')->on('users');
         $table->timestamps();

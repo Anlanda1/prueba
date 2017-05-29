@@ -104,7 +104,7 @@
     </div>
     </div>
 
-    <!-- pedido -->
+    <!-- Tabla pedido -->
     <aside class="call-to-action bg-primary">
         <div class="container">
             <div class="row">

@@ -3,15 +3,14 @@
 @section('content')
 	<div class="col-sm-8">
 		<h2>
-			Editar empleado
+			Editar mesa
             <a href="{{ route('gerente.index') }}" class="btn btn-dark btn-lg">Volver</a>
 		</h2>
+		
+        {!! Form::model($mesa, ['route' => ['mesa.update', $mesa->id], 'method' => 'PUT']) !!}
 
-		{!! Form::model($user, ['route' => ['gerente.update', $user->id], 'method' => 'PUT']) !!}
-
-            @include('crudgerente.form')
+            @include('crudmesas.form')
 
         {!! Form::close() !!}
-
 	</div>
 @endsection

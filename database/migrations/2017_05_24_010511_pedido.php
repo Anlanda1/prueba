@@ -15,7 +15,7 @@ class Pedido extends Migration
     {
         Schema::create('pedido', function (Blueprint $table) {
         $table->increments('id');
-        $table->boolean('estado');
+        $table->string('estado');
         $table->integer('mesa_id')->unsigned();
         $table->foreign('mesa_id')->references('id')->on('mesa');
         $table->integer('empleado_id')->unsigned();

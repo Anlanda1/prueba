@@ -15,7 +15,7 @@ class Compra extends Migration
     {
       Schema::create('compra', function (Blueprint $table) {
         $table->increments('id');
-        $table->datetime('fecha');
+        $table->string('fecha');
         $table->float('monto');
         $table->integer('mesa_id')->unsigned();
         $table->foreign('mesa_id')->references('id')->on('mesa');

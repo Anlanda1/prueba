@@ -69,35 +69,33 @@
                 <thead>
                     <tr class="danger">
                         <th>Número de pedido</th>
-                        <th>Producto</th>
+                        <th>Estado</th>
                         <th>Mesa</th>
                         <th>Mesero</th>
-                        <th>Estado</th>
+                        <th>ID producto</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($pedidos as $pedido)
                     <tr>
-                        <td>
-
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
+                        <td>{{ $pedido->id }}</td>
+                        <td>{{ $pedido->estado }}</td>
+                        <td>{{ $pedido->mesa_id }}</td>
+                        <td>{{ $pedido->empleado_id }}</td>
+                        <td>{{ $pedido->producto_id }}</td>
                     </tr>
-                    
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    </div>
+
+    <!-- Botón productos -->
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <a href="{{ url('tablamenu') }}" class="btn btn-success">Menús</span></a>
+        </div>
     </div>
 
     <!-- Tabla de almacen -->

@@ -4,7 +4,7 @@
 	<div class="col-sm-8">
 		<h2>
 			Nuevo producto
-			<a href="{{ route('mesero.index') }}" class="btn btn-dark btn-lg">Volver</a>
+			<a href="{{ route('publico') }}" class="btn btn-dark btn-lg">Volver</a>
 		</h2>
         {!! Form::open(['route' => 'producto.store']) !!}
 

@@ -9,30 +9,25 @@
 </div>
 
 <div class="form-group">
-	{!! Form::label('email', 'Email del empleado') !!}
+	{!! Form::label('email', 'Correo') !!}
 	{!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('puesto', 'Puesto del empleado') !!}
-	{!! Form::text('puesto', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-	{!! Form::label('sueldo', 'Sueldo del empleado') !!}
+	{!! Form::label('sueldo', 'Sueldo') !!}
 	{!! Form::text('sueldo', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('password', 'Contraseña del empleado') !!}
+	{!! Form::label('puesto', 'Puesto') !!}
+	{!! Form::text('puesto', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+	{!! Form::label('password', 'Contraseña') !!}
 	{!! Form::text('password', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('password_confirmation', 'Confirmar contraseña') !!}
-	{!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-	{!! Form::submit('Enviar', ['class' => 'btn btn-dark btn-lg']) !!}
+	{!! Form::submit('Registrar', ['class' => 'btn btn-dark btn-lg']) !!}
 </div>

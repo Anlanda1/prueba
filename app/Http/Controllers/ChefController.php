@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Almacen;
+use App\Pedido;
 
 class ChefController extends Controller
 {
@@ -14,8 +15,9 @@ class ChefController extends Controller
      */
     public function index()
     {
+        $pedidos = Pedido::orderBy('id', 'DESC')->paginate();
         $productos = Almacen::orderBy('id', 'DESC')->paginate();
-        return view('chef', compact('productos'));
+        return view('chef', compact('productos'), compact('pedidos'));
     }
 
     /**

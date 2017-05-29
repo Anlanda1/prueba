@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Almacen;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Validator;
 
 class GerenteController extends Controller
 {
@@ -38,7 +38,7 @@ class GerenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(UserRequest $UserRequest)
     {
         $user = new User;
 
@@ -47,8 +47,7 @@ class GerenteController extends Controller
         $user->email = $request->email;
         $user->sueldo = $request->sueldo;
         $user->puesto = $request->puesto;
-        $pass = Hash::make($request->password);
-        $user->password = $pass;
+        $user->password = $request->password;
 
         $user->save();
         

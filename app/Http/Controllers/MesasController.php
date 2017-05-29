@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pedido;
-use App\Http\Requests\PedidoRequest;
+use App\Mesa;
+use App\Http\Requests\MesaRequest;
 
-class PedidoController extends Controller
+class MesasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Producto::orderBy('id', 'DESC')->paginate();
-        return view('mesero', compact('pedidos'));
+        $mesas = Mesa::orderBy('id', 'DESC')->paginate();
+        return view('tablamesas', compact('mesas'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        return view('crudpedido.create');
+        return view('crudmesas.create');
     }
 
     /**
@@ -35,18 +35,17 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MesaRequest $request)
     {
-        $pedido = new Pedido;
+        $mesa = new Mesa;
 
-        $pedido->estado = $request->estado;
-        $pedido->mesa_id = $request->mesa_id;
-        $pedido->empleado_id = $request->empleado_id;
-        $pedido->producto_id = $request->empelado_id;
+        $mesa->id = $request->id;
+        $mesa->estado = $request->estado;
+        $mesa->user_id = $request->user_id;
 
-        $pedido->save();
+        $mesa->save();
         
-        return redirect()->route('mesero.index');
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -57,8 +56,8 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        $pedido = Pedido::find($id);
-        return view('crudpedido.show', compact('pedido'));
+        $mesa = Mesa::find($id);
+        return view('crudmesas.show', compact('mesas'));
     }
 
     /**
@@ -69,8 +68,8 @@ class PedidoController extends Controller
      */
     public function edit($id)
     {
-        $pedido = Pedido::find($id);
-        return view('crudpedido.edit', compact('pedido'));
+        $mesa = Mesa::find($id);
+        return view('crudmesas.edit', compact('mesas'));
     }
 
     /**
@@ -80,18 +79,17 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MesaRequest $request, $id)
     {
-        $pedido = Pedido::find($id);
+        $mesa = Mesa::find($id);
 
-        $pedido->estado = $request->estado;
-        $pedido->mesa_id = $request->mesa_id;
-        $pedido->empleado_id = $request->empleado_id;
-        $pedido->producto_id = $request->empelado_id;
+        $mesa->id = $request->id;
+        $mesa->estado = $request->estado;
+        $mesa->user_id = $request->user_id;
 
-        $pedido->save();
+        $mesa->save();
         
-        return redirect()->route('mesero.index');
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -102,8 +100,8 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        $pedidos = Pedido::find($id);
-        $pedidos->delete();
+        $mesas = Mesa::find($id);
+        $mesas->delete();
 
         return back();
     }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function() {
+Route::get('/', 'PublicoController@index', function() {
     return view('publico');
 });
 
@@ -25,3 +25,13 @@ Route::resource('mesero', 'MeseroController');
 Route::resource('producto', 'ProductoController');
 Route::resource('chef', 'ChefController');
 Route::resource('pedido', 'PedidoController');
+Route::resource('mesa', 'MesasController');
+Route::resource('recepcionista', 'RecepcionistaController');
+
+Route::get('/tablamenu', 'TablamenuController@index', function() {
+    return view('tablamenu');
+});
+
+Route::get('/tablamesas', 'TablamesasController@index', function() {
+    return view('tablamesas');
+});

@@ -44,10 +44,10 @@
                 <a href="#almacen" onclick=$("#menu-close").click();>Almacén</a>
             </li>
             <li>
-                <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
+                <a href="{{ url('tablamenu') }}" onclick=$("#menu-close").click();>Menú</a>
             </li>
             <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Mesas</a>
+                <a href="{{ url('tablamesas') }}" onclick=$("#menu-close").click();>Mesas</a>
             </li>
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>Reportes</a>
@@ -154,14 +154,21 @@
                 </tbody>
             </table>
             {!! $productos->render() !!}
-                <a href="{{ route('almacen.create') }}" class="btn btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{{ route('almacen.create') }}" class="btn btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>
         </div>
         </div>
     </section>
 
+    <!-- Registo empleados -->
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <a href="{{ route('register') }}" class="btn btn-success">Nuevo empleado +</span></a>
     <!-- Tabla menu -->
-
+            <a href="{{ url('tablamenu') }}" class="btn btn-success">Menús</span></a>
     <!-- Tabla mesas -->
+            <a href="{{ url('tablamesas') }}" class="btn btn-success">Mesas</span></a>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
