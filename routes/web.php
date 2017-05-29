@@ -15,6 +15,11 @@ Route::get('/', 'PublicoController@index', function() {
     return view('publico');
 });
 
+/*Llamadas al controlador Auth*/
+//Route::get('login', 'AuthController@showLogin'); // Mostrar login
+//Route::post('login', 'AuthController@postLogin'); // Verificar datos
+//Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -27,11 +32,17 @@ Route::resource('chef', 'ChefController');
 Route::resource('pedido', 'PedidoController');
 Route::resource('mesa', 'MesasController');
 Route::resource('recepcionista', 'RecepcionistaController');
+Route::resource('reservacion', 'ReservacionController');
+Route::resource('cajero', 'CajeroController');
 
 Route::get('/tablamenu', 'TablamenuController@index', function() {
-    return view('tablamenu');
+	return view('tablamenu');
 });
 
 Route::get('/tablamesas', 'TablamesasController@index', function() {
     return view('tablamesas');
+});
+
+Route::get('/tablareservacion', 'TablareservacionController@index', function() {
+    return view('tablareservacion');
 });

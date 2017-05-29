@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Pedido extends Migration
+class Reservaciones extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class Pedido extends Migration
      */
     public function up()
     {
-        Schema::create('pedido', function (Blueprint $table) {
+        Schema::create('reservacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('estado');
+            $table->time('horainicio');
+            $table->time('horafin');
+            $table->integer('npersonas');
             $table->integer('mesa_id')->unsigned();
             $table->foreign('mesa_id')->references('id')->on('mesa');
             $table->integer('empleado_id')->unsigned();
             $table->foreign('empleado_id')->references('id')->on('users');
-            $table->integer('producto_id')->unsigned();
-            $table->foreign('producto_id')->references('id')->on('producto');
             $table->timestamps();
         });
     }

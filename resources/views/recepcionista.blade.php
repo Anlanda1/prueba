@@ -43,6 +43,9 @@
             <li>
                 <a href="#mesas" onclick=$("#menu-close").click();>Mesas</a>
             </li>
+            <li>
+                <a href="#reservacion" onclick=$("#menu-close").click();>Reservación</a>
+            </li>
         </ul>
     </nav>
 
@@ -84,119 +87,54 @@
         </div>
     </section>
 
-    <!-- Callout -->
-    <aside class="callout">
-        <div class="text-vertical-center">
-            <!--<h1>Un cliente satisfecho es un cliente que volverá</h1>-->
-        </div>
-    </aside>
-
-    <!-- Portfolio -->
-    <!--<section id="portfolio" class="portfolio">
+    <!-- Reservación -->
+    <section id="botones" class="services bg-primary">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Galería?</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                                </a>
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Realizar una reservación</strong>
+                            </h4>
+                            <p>Aquí podrás agregar una reservación de un nuevo cliente.</p>
+                            <a href="{{ route('reservacion.create') }}" class="btn btn-light">Nueva reservación</a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                                </a>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Ver reservaciones</strong>
+                                </h4>
+                                <p>Aquí podrás ver las reservaciones del restaurante.</p>
+                            <a href="{{ url('tablareservacion') }}" class="btn btn-light">Ver reservaciones</a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                                </a>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-arrow-left fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Volver al inicio</strong>
+                                </h4>
+                                <p>Regresar a la pantalla pincipal</p></br>
+                            <a href="{{ url('/') }}" class="btn btn-light">Volver</a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>-->
-                    <!-- /.row (nested) -->
-                    <!--<a href="#" class="btn btn-dark">Ver más</a>
-                </div>-->
-                <!-- /.col-lg-10 -->
-            <!--</div>-->
-            <!-- /.row -->
-        <!--</div>-->
-        <!-- /.container -->
-    <!--</section>-->
-
-    <!-- Call to Action -->
-    <!--<aside class="call-to-action bg-primary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h3>Otra secciones?</h3>
-                    <a href="#" class="btn btn-lg btn-light">Inicio?</a>
-                    <a href="#" class="btn btn-lg btn-dark">Salir</a>
                 </div>
             </div>
         </div>
-    </aside>-->
-
-    <!-- Map 
-    <section id="contact" class="map">-->
-        <!--<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>-->
-
-        <!--<iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2658.72473962773!2d-96.92778899477126!3d19.541403361734833!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbe46a8f06177f3a2!2sFacultad+de+Econom%C3%ADa+y+Geograf%C3%ADa+de+la+Universidad+Veracruzana!5e0!3m2!1ses-419!2smx!4v1491456504574"></iframe>
-        <br />
-        <small>
-        	<a href="https://www.google.com.mx/maps/place/Facultad+de+Econom%C3%ADa+y+Geograf%C3%ADa+de+la+Universidad+Veracruzana/@19.5414034,-96.927789,17.5z/data=!4m5!3m4!1s0x0:0xbe46a8f06177f3a2!8m2!3d19.5413212!4d-96.9271508"></a>-->
-
-            <!--<a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>-->
-        <!--</small>
-    </section>-->
-
-    <!-- Footer -->
-    <!--<footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Alitas FEI</strong>
-                    </h4>
-                    <p>Av. Xalapa
-                        <br>Xalapa, Veracruz</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
-                        </li>
-                    </ul>
-                    <br>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                        </li>
-                    </ul>
-                    <hr class="small">
-                    <p class="text-muted">Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </div>
-        <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
-    </footer>-->
+    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

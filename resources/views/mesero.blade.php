@@ -35,10 +35,10 @@
                 <a href="#top" onclick=$("#menu-close").click();>Mesero {{ Auth::user()->name }}</a>
             </li>
             <li>
-                <a href="#" onclick=$("#menu-close").click();>Realizar pedido</a>
+                <a href="pedido" onclick=$("#menu-close").click();>Realizar pedido</a>
             </li>
             <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();>Menú</a>
+                <a href="#menu" onclick=$("#menu-close").click();>Menú</a>
             </li>
             <li>
                 <a href="{{ route('logout') }}" 
@@ -55,7 +55,6 @@
         <div class="text-vertical-center">
             <h1>Bienvenido mesero</h1>
             <br>
-            <!--<a href="#about" class="btn btn-light btn-lg">Comenzar pedido</a>-->
         </div>
     </header>
 
@@ -82,19 +81,6 @@
                         <td>{{ $platillo->descripcion }}</td>
                         <td>{{ $platillo->tipo }}</td>
                         <td>{{ $platillo->precio }}</td>
-                        <td>
-                            <form action="{{ route('producto.edit', $platillo->id) }}" method="GET">
-                                {{ csrf_field() }}
-                                <button class="btn btn-warning">Editar</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('producto.destroy', $platillo->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-danger">Borrar</button>
-                            </form>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -105,16 +91,40 @@
     </div>
 
     <!-- Tabla pedido -->
-    <aside class="call-to-action bg-primary">
+    <section id="pedido" class="services bg-primary">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h3>Tomar pedido</h3>
-                    <a href="{{ route('pedido.create') }}" class="btn btn-success">Nuevo pedido   <span class="glyphicon glyphicon-ok"></span></a>
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Agregar un nuevo pedido</strong>
+                            </h4>
+                            <p>Aquí podrás agregar el pedido que el cliente ordene.</p>
+                            <a href="{{ route('pedido.create') }}" class="btn btn-light">Tomar pedido</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-arrow-left fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Volver al inicio</strong>
+                                </h4>
+                                <p>Regresar a la pantalla pincipal</p></br>
+                            <a href="{{ url('/') }}" class="btn btn-light">Volver</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
-    </aside>
+    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

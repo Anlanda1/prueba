@@ -159,16 +159,54 @@
         </div>
     </section>
 
-    <!-- Registo empleados -->
-    <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <a href="{{ route('register') }}" class="btn btn-success">Nuevo empleado +</span></a>
-    <!-- Tabla menu -->
-            <a href="{{ url('tablamenu') }}" class="btn btn-success">Menús</span></a>
-    <!-- Tabla mesas -->
-            <a href="{{ url('tablamesas') }}" class="btn btn-success">Mesas</span></a>
+    <!-- Botones -->
+    <section id="botones" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Ver menú del restaurante</strong>
+                            </h4>
+                            <p>Aquí podrás ver la tabla del menú y hacer modificaciones.</p>
+                            <a href="{{ url('tablamenu') }}" class="btn btn-light">Menús</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Ver mesas asignadas</strong>
+                                </h4>
+                                <p>Aquí podrás ver las mesas del restaurante.</p>
+                            <a href="{{ url('tablamesas') }}" class="btn btn-light">Mesas</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-arrow-left fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Volver al inicio</strong>
+                                </h4>
+                                <p>Regresar a la pantalla pincipal</p></br>
+                            <a href="{{ url('/') }}" class="btn btn-light">Volver</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

@@ -71,24 +71,9 @@
             <a href="{{ route('mesero.index') }}" class="btn btn-dark btn-lg">Mesero</a>
             <a href="{{ route('chef.index') }}" class="btn btn-dark btn-lg">Chef</a>
             <a href="{{ route('recepcionista.index') }}" class="btn btn-dark btn-lg">Recepcionista</a>
+            <a href="{{ route('cajero.index') }}" class="btn btn-dark btn-lg">Cajero</a>
         </div>
     </header>
-
-    <!--
-    <!- About ->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-                    <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
-                </div>
-            </div>
-            <!- /.row ->
-        </div>
-        <!- /.container ->
-    </section>
-    -->
 
     <!-- Tabla menu -->
     <div id="menu" class="container-fluid">
@@ -122,49 +107,6 @@
     </div>
     </div>
 
-    <!-- Menú ->
-    <section id="menu" class="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Nuestro Menú</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-    
     <!-- Callout -->
     <aside class="callout">
         <div class="text-vertical-center">

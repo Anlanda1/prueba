@@ -33,19 +33,19 @@ class autenticacion
         $tipo = $this->auth->user()->puesto;
         switch ($tipo) {
             case "Gerente":
-                redirect()->route('gerente.index');
+                redirect()->to(route('gerente.index'));
                 break;
 
             case "Mesero":
-                redirect()->to(view('mesero'));
+                redirect()->to(route('mesero.index'));
                 break;
                 
             case "Chef":
-                redirect()->to('chef');
+                redirect()->to(route('chef.index'));
                 break;
                 
             case "Recepcionista":
-                redirect()->to('recepcionista');
+                redirect()->to(route('recepcionista.index'));
                 break;
 
             case "Cajero":

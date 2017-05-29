@@ -72,7 +72,7 @@
                         <th>Estado</th>
                         <th>Mesa</th>
                         <th>Mesero</th>
-                        <th>ID producto</th>
+                        <th>ID menú</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,11 +92,39 @@
     </div>
 
     <!-- Botón productos -->
-    <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-            <a href="{{ url('tablamenu') }}" class="btn btn-success">Menús</span></a>
+    <section id="productos" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <span class="fa-stack fa-4x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                        </span>
+                        <h4>
+                            <strong>Ver menús del restaurante</strong>
+                        </h4>
+                        <p>Aquí podrás ver la tabla del menú.</p>
+                        <a href="{{ url('tablamenu') }}" class="btn btn-light">Menús</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <span class="fa-stack fa-4x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-arrow-left fa-stack-1x text-primary"></i>
+                        </span>
+                        <h4>
+                            <strong>Volver al inicio</strong>
+                        </h4>
+                        <p>Regresar a la pantalla pincipal</p>
+                    <a href="{{ url('/') }}" class="btn btn-light">Volver</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
 
     <!-- Tabla de almacen -->
     <section id="almacen" class="portfolio">
@@ -119,25 +147,10 @@
                         <td>{{ $producto->nombre }}</td>
                         <td>{{ $producto->cantidad }}</td>
                         <td>{{ $producto->precio }}</td>
-                        <!--<td>
-                            <form action="{{ route('almacen.edit', $producto->id) }}" method="GET">
-                                {{ csrf_field() }}
-                                <button class="btn btn-warning">Editar</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{ route('almacen.destroy', $producto->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-danger">Borrar</button>
-                            </form>
-                        </td>-->
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <!--{!! $productos->render() !!}
-                <a href="{{ route('almacen.create') }}" class="btn btn-success">Nuevo producto   <span class="glyphicon glyphicon-pencil"></span></a>-->
         </div>
         </div>
     </section>
