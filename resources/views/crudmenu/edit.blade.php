@@ -3,13 +3,13 @@
 @section('content')
 	<div class="col-sm-8">
 		<h2>
-			Editar producto
+			Editar menú
             <a href="{{ url('/') }}" class="btn btn-dark btn-lg">Volver</a>
 		</h2>
 		
-        {!! Form::model($platillo, ['route' => ['producto.update', $platillo->id], 'method' => 'PUT']) !!}
+        {!! Form::model($menu, ['route' => ['menu.update', $menu->id], 'method' => 'PUT']) !!}
 
-            @include('crudproducto.form')
+            @include('crudmenu.form')
 
         {!! Form::close() !!}
 	</div>

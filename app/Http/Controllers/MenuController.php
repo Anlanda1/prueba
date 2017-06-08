@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Producto;
-use App\Http\Requests\ProductoRequest;
+use App\Menu;
 
-class ProductoController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $platillos = Producto::orderBy('id', 'DESC')->paginate();
-        return view('publico', compact('platillos'));
+        $menu = Menu::orderBy('id', 'DESC')->paginate();
+        return view('gerente', compact('menu'));
     }
 
     /**
@@ -26,7 +25,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('crudproducto.create');
+        return view('crudmenu.create');
     }
 
     /**
@@ -35,18 +34,18 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductoRequest $request)
+    public function store(Request $request)
     {
-        $platillo = new Producto;
+        $menu = new Menu;
 
-        $platillo->nombre = $request->nombre;
-        $platillo->descripcion = $request->descripcion;
-        $platillo->precio = $request->precio;
-        $platillo->tipo = $request->tipo;
+        $menu->nombre = $request->nombre;
+        $menu->descripcion = $request->descripcion;
+        $menu->precio = $request->precio;
+        $menu->tipo = $request->tipo;
 
-        $platillo->save();
+        $menu->save();
         
-        return redirect()->route('producto.index');
+        return redirect()->route('gerente.index');
     }
 
     /**
@@ -57,8 +56,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $platillo = Producto::find($id);
-        return view('crudproducto.show', compact('platillo'));
+        $menu = Menu::find($id);
+        return view('crudmenu.show', compact('menu'));
     }
 
     /**
@@ -69,8 +68,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $platillo = Producto::find($id);
-        return view('crudproducto.edit', compact('platillo'));
+        $menu = Menu::find($id);
+        return view('crudmenu.edit', compact('menu'));
     }
 
     /**
@@ -80,16 +79,16 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductoRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $platillo = Producto::find($id);
+        $menu = Menu::find($id);
 
-        $platillo->nombre = $request->nombre;
-        $platillo->descripcion = $request->descripcion;
-        $platillo->precio = $request->precio;
-        $platillo->tipo = $request->tipo;
+        $menu->nombre = $request->nombre;
+        $menu->descripcion = $request->descripcion;
+        $menu->precio = $request->precio;
+        $menu->tipo = $request->tipo;
 
-        $platillo->save();
+        $menu->save();
         
         return redirect()->route('gerente.index');
     }
@@ -102,8 +101,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $platillos = Producto::find($id);
-        $platillos->delete();
+        $menus = Menu::find($id);
+        $menus->delete();
 
         return back();
     }

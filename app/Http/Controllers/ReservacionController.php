@@ -41,6 +41,7 @@ class ReservacionController extends Controller
     {
         $reservacion = new Reservacion;
 
+        $reservacion->nombre = $request->nombre;
         $reservacion->horainicio = $request->horainicio;
         $reservacion->horafin = $request->horafin;
         $reservacion->npersonas = $request->npersonas;
@@ -86,6 +87,7 @@ class ReservacionController extends Controller
     {
         $reservacion = Reservacion::find($id);
 
+        $reservacion->nombre = $request->nombre;
         $reservacion->horainicio = $request->horainicio;
         $reservacion->horafin = $request->horafin;
         $reservacion->npersonas = $request->npersonas;

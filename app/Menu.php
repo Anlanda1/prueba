@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservacion extends Model
+class Menu extends Model
 {
 	use Notifiable;
 	
-	protected $table = 'reservacion';
+	protected $table = 'menu';
     protected $fillable = [
-        'id', 'nombre', 'horainicio', 'horafin', 'npersonas', 'mesa_id', 'empleado_id'
+        'nombre', 'tipo', 'descripcion', 'precio'
     ];
 }

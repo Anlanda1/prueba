@@ -35,7 +35,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>Recepcionista {{ Auth::user()->name }}</a>
+                <a href="#top" onclick=$("#menu-close").click();>Recep. {{ Auth::user()->name }}</a>
             </li>
             <li>
                 <a href="#top" onclick=$("#menu-close").click();>Inicio</a>
@@ -45,6 +45,13 @@
             </li>
             <li>
                 <a href="#reservacion" onclick=$("#menu-close").click();>Reservación</a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+                    </form>
             </li>
         </ul>
     </nav>

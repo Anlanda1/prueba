@@ -41,6 +41,7 @@
             </table>
             {!! $mesas->render() !!}
             <a href="{{ route('mesa.create') }}" class="btn btn-success">Nueva mesa   <span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{{ route('gerente.index') }}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>   Regresar</a>
         </div>
     </div>
 </div>

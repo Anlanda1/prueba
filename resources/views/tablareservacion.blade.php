@@ -12,6 +12,7 @@
                 <thead>
                     <tr class="danger">
                         <th>ID</th>
+                        <th>Nombre</th>
                         <th>Hora inicio</th>
                         <th>Hora fin</th>
                         <th>Número de personas</th>
@@ -22,6 +23,7 @@
                     @foreach($reservaciones as $reservacion)
                     <tr>
                         <td>{{ $reservacion->id }}</td>
+                        <td>{{ $reservacion->nombre }}</td>
                         <td>{{ $reservacion->horainicio }}</td>
                         <td>{{ $reservacion->horafin }}</td>
                         <td>{{ $reservacion->npersonas }}</td>

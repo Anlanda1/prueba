@@ -42,6 +42,8 @@
                 </tbody>
             </table>
             {!! $platillos->render() !!}
+            <a href="{{ route('producto.create') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>   Agregar</a>
+            <a href="{{ url('/') }}" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>   Regresar</a>
         </div>
     </div>
 </div>

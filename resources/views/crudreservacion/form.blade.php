@@ -1,11 +1,16 @@
 <div class="form-group">
+	{!! Form::label('horafin', 'Fin de reservacion (hh:mm:ss)') !!}
+	{!! Form::text('horafin', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
 	{!! Form::label('horainicio', 'Hora de reservacion (hh:mm:ss)') !!}
 	{!! Form::text('horainicio', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-	{!! Form::label('horafin', 'Fin de reservacion (hh:mm:ss)') !!}
-	{!! Form::text('horafin', null, ['class' => 'form-control']) !!}
+	{!! Form::label('nombre', 'Nombre del cliente') !!}
+	{!! Form::text('nombre', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

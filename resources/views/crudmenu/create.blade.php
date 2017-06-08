@@ -3,12 +3,12 @@
 @section('content')
 	<div class="col-sm-8">
 		<h2>
-			Nuevo producto
+			Nuevo menú
 			<a href="{{ url('/') }}" class="btn btn-dark btn-lg">Volver</a>
 		</h2>
-        {!! Form::open(['route' => 'producto.store']) !!}
+        {!! Form::open(['route' => 'menu.store']) !!}
 
-            @include('crudproducto.form')
+            @include('crudmenu.form')
 
         {!! Form::close() !!}
 	</div>

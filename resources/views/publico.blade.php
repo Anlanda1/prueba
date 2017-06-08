@@ -58,6 +58,9 @@
                     <form id="login-form" action="{{ route('login') }}" method="GET" style="display: none;">{{ csrf_field() }}
                     </form>
             </li>
+            <li>
+                <a href="{{ route('register') }}" onclick=$("#menu-close").click();>Registrar</a>
+            </li>
         </ul>
     </nav>
     
@@ -130,10 +133,10 @@
                                     <i class="fa fa-cloud fa-stack-1x text-primary"></i>
                                 </span>
                                 <h4>
-                                    <strong>Nombre promo</strong>
+                                    <strong>Promo 1</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Paquete armalo tú mismo.</p>
+                                <a href="#" class="btn btn-light">No disponible</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -143,10 +146,10 @@
                                 <i class="fa fa-compass fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Nombre promo</strong>
+                                    <strong>Promo 2</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Paquete te lo armamos.</p>
+                                <a href="#" class="btn btn-light">No disponible</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -156,10 +159,10 @@
                                 <i class="fa fa-flask fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Nombre promo</strong>
+                                    <strong>Promo cuates</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Promoción para compartir con tu mejor amigo.</p>
+                                <a href="#" class="btn btn-light">No disponible</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -169,10 +172,10 @@
                                 <i class="fa fa-shield fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Nombre promo</strong>
+                                    <strong>Promo pareja</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Trae a tu pareja, dense un beso y ella paga a mitad de precio.</p>
+                                <a href="#" class="btn btn-light">No disponible</a>
                             </div>
                         </div>
                     </div>

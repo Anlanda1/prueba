@@ -15,6 +15,7 @@ class Reservaciones extends Migration
     {
         Schema::create('reservacion', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->time('horainicio');
             $table->time('horafin');
             $table->integer('npersonas');

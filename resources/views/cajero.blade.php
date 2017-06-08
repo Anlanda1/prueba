@@ -40,7 +40,11 @@
                 <a href="#pago" onclick=$("#menu-close").click();>Realizar pago</a>
             </li>
             <li>
-                <a href="#tarjeta" onclick=$("#menu-close").click();>Pago con tarjeta</a>
+                <a href="{{ route('logout') }}" 
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}
+                    </form>
             </li>
         </ul>
     </nav>
@@ -97,7 +101,7 @@
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-success btn-lg btn-block">
-                    Generar ticket <span class="glyphicon glyphicon-chevron-right"></span>
+                    Realizar pago <span class="glyphicon glyphicon-chevron-right"></span>
                 </button></td>
             </div>
         </div>
